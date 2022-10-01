@@ -1,0 +1,42 @@
+{% extends 'repoNavbar.html' %}
+{% block 'titulo' %}{% block title %}Jogos{% endblock %}{% endblock %}
+
+
+{% block 'navbar'%}
+    <a href="/dashboard/jogos/" class="text-decoration-none text-dark itemsNavbar"><div class="px-3">Repositório</div></a>
+    <a href="/dashboard/jogos/pendentes" class="text-decoration-none text-dark itemsNavbar"><div class="px-3">Pendente</div></a>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1>Publicados</h1>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Matéria</th>
+                <th scope="col">Descrição</th>  
+                <th scope="col">Link</th>        
+                <th scope="col">Publicado</th>    
+                <th scope="col"></th>     
+            </tr>
+        </thead>
+        {% for tarefa in tarefas %}
+          {% if tarefa.categoria.tipo == 'Jogos' %}
+          <tbody>
+            <tr>
+              <td>{{tarefa.nome}}</td>
+              <td>{{tarefa.materia}}</td>
+              <td>{{tarefa.descricao}}</td>
+              <td>{{tarefa.link}}</td>
+              <td><span class="text-danger fw-bold">Não</span></td>
+              <td><a href="{% url 'edit' tarefa.id %}"><button type="button" class="border-0 bg-transparent fw-bold text-decoration-underline">Edit</button></td></a>
+            </tr>  
+          </tbody>
+          {% endif %}
+        {% endfor%}
+    </table>
+
+</div>
+{% endblock %}

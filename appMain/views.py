@@ -13,7 +13,7 @@ def tarefas(request):
 def videos(request): 
     tarefas = Tarefas.objects.all()
     return render(request,'videos.html',{'tarefas':tarefas})
-
+ 
 def games(request): 
     tarefas = Tarefas.objects.all()
     return render(request,'games.html',{'tarefas':tarefas})
