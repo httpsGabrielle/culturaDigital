@@ -1,0 +1,36 @@
+{% extends 'base_jogos.html' %}
+{% block 'titulo' %}{% block title %}Jogos{% endblock %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1>Publicados</h1>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Matéria</th>
+                <th scope="col">Descrição</th>  
+                <th scope="col">Link</th>        
+                <th scope="col">Publicado</th>    
+                <th scope="col"></th>     
+            </tr>
+        </thead>
+        {% for jogo in jogos %}
+          <tbody>
+            {% if jogo.publicado %}
+            <tr>
+              <td>{{jogo.nome_games}}</td>
+              <td>{{jogo.materia}}</td>
+              <td>{{jogo.desc_games}}</td>
+              <td>{{jogo.link_games}}</td>
+              <td><span class="text-success fw-bold">Sim</span></td>
+              <td><a href="{% url 'jogosedit' jogo.id %}"><button type="button" class="border-0 bg-transparent fw-bold text-decoration-underline">Edit</button></td></a>
+            </tr>  
+            {% endif %}  
+          </tbody>
+        {% endfor%}
+    </table>
+
+</div>
+{% endblock %}
