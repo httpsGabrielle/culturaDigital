@@ -1,0 +1,60 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+p{
+    font-family: 'Lato', sans-serif;
+}
+
+h1{
+    font-size: 2.25em;
+    font-weight: bold;
+}
+h2{
+    font-size: 2em;
+    font-weight: normal;
+}
+button, input, td{
+    font-family: 'Lato', sans-serif;
+}
+.view{
+    background-image: url("../img/background/Vector.svg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 100vh;
+}
+.logo{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+.bg-menucolor{
+    background-color: #f9f9f9;
+}
+.text-gray{
+    color:#7d7d7d;
+}
+.menuItem:hover{
+    font-weight: bolder;
+    color: black;
+    background-color:#e0e0e0;
+}
+.btn-green{
+    background-color:#18a770;
+}
+.itemsNavbar:hover{
+    border-bottom: 2px solid #18a770;
+    font-weight: bold;
+    color: black;
+    border-bottom: 2px solid #18a770;
+}
+@media only screen and (max-width: 800px){
+    .main{
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        height: auto;
+    }
+    .main-title{
+        display: flex;
+        text-align: center;
+    }
+}
