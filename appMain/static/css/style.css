@@ -37,11 +37,11 @@ button, input, td{
 .bg-menucolor{
     background-color: #f9f9f9;
 }
+.bg-gray{
+    
+}
 .text-gray{
     color:#7d7d7d;
-}
-.menuItem{
-
 }
 .menuItem:hover {
     font-weight: bolder;

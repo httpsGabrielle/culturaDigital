@@ -5,7 +5,7 @@
 <div class="container-fluid px-5">
     <div class="container-fluid  rounded">
         <div class="row headerschool">
-            <div class="col-5 p-5 text-white d-flex justify-content-center flex-column">
+            <div class="col-5 px-5 text-white d-flex justify-content-center flex-column">
                 <h2 class="fw-bold">Bem-vindo(a)!</h2>
                 <p>Essa é a área administrativa, acesso restrito para Administradores! Liste e adicione novos usuários.</p>
             </div>
@@ -13,9 +13,26 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-between mt-3">
-        <h1>Escolas</h1>
+    <div class="d-flex justify-content-between mt-3 px-3">
+        <h2>Escolas</h2>
         <button type="button" class="btn btn-green text-white"><span class="material-symbols-outlined align-middle pe-1">add</span>Adicionar</button>
+    </div>
+
+    <div class="container-fluid d-flex flex-wrap">
+    {% for user in users %}
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <div class=" d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold">{{user.get_username}}</h5>
+                    <button type="button" class="btn"><span class="material-symbols-outlined text-secondary">edit</span></button>
+                </div>
+                <p class="card-text text-gray py-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-danger" type="button">Deletar</button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
     </div>
 </div>          
 {% endblock %}

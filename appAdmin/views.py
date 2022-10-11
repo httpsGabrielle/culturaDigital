@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from appMain.models import Tarefas
 from appMain.views import tarefas
 from .forms import AddTarefas
+from django.contrib.auth.models import User
 
 @login_required(login_url='/accounts/login/')
 def dashboard(request):
@@ -99,4 +100,6 @@ def edit(request, id):
     return render(request, 'edit.html', context)
 
 def escolas(request):
-    return render(request, 'escolas.html')
+    users = User.objects.all()
+    context = {'users':users}
+    return render(request, 'escolas.html', context)
