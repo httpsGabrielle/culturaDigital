@@ -97,3 +97,6 @@ def edit(request, id):
     
     context = {'tarefas':tarefas, 'form':form}
     return render(request, 'edit.html', context)
+
+def escolas(request):
+    return render(request, 'escolas.html')
