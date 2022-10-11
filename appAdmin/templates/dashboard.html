@@ -16,50 +16,58 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
 <body>
-    <div class="d-flex vh-100">
-        <div class="col-2 h-100 d-flex justify-content-between flex-column bg-menucolor">
-            <div class="container pt-3">
-                <a class="navbar-brand text-dark d-flex align-items-center logo" href="/"><img class="px-3" src="{% static 'img/icons/Logo.png' %}">Cultura Digital Itu</a>
-                <div class="container py-5">
-                    <a class="text-decoration-none text-dark menuItem text-gray" href="/dashboard">
-                        <div class="d-flex justify-content-center align-items-center menuItem text-gray py-1 p-1 rounded">
+    <div class="container-fluid d-flex">
+        <div class="d-flex flex-column justify-content-between col-2 bg-menucolor vh-100 p-3"> <!--Menu/Navbar lateral-->
+            <div>
+                <a href="/" class="navbar-brand text-dark d-flex align-items-center logo">
+                    <div class="col-2"><img class="img-fluid" src="{% static 'img/icons/logo.png' %}"></div>
+                    <div class="col" >Cultura Digital Itu</div>
+                </a>
+        
+                <div class="pt-4 px-2">
+                    <a href="/dashboard" class="text-decoration-none text-gray">
+                        <div class="row menuItem rounded py-2">
                             <div class="col-2"><span class="material-symbols-outlined align-middle">dashboard</span></div>
-                            <div class="col-10">Home</div>
+                            <div class="col">Home</div>
                         </div>
                     </a>
-                    <div class="d-flex  menuItem text-gray p-1 rounded align-items-center flex-wrap" data-bs-toggle="collapse" data-bs-target="#collapseExample">
+                    <div class="row menuItem text-gray py-2 rounded" data-bs-toggle="collapse" data-bs-target="#collapseExample">
                         <div class="col-2"><span class="material-symbols-outlined align-middle">fact_check</span></div>
                         <div class="col-5">Repositório</div>
                         <div  class="col-1">
                             <span class="material-symbols-outlined align-middle">expand_more</span>
                         </div>
-                        <div class="collapse" id="collapseExample">
-                            <div class="d-flex flex-column px-5 ">
-                                <a href="/dashboard/jogos" class="text-decoration-none"><p class="menuItem text-gray pt-1">Jogos</p></a>
-                                <a href="/dashboard/videos" class="text-decoration-none"><p class="menuItem text-gray">Vídeos</p></a>
-                                <a href="/dashboard/atividades" class="text-decoration-none"><p class="menuItem text-gray">Atividades</p></a>
+                        <div class="collapse py-2" id="collapseExample">
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col">
+                                    <div class="d-flex flex-column">
+                                        <a href="/dashboard/jogos" class="text-decoration-none"><p class="menuItem text-gray pt-1">Jogos</p></a>
+                                        <a href="/dashboard/videos" class="text-decoration-none"><p class="menuItem text-gray">Vídeos</p></a>
+                                        <a href="/dashboard/atividades" class="text-decoration-none"><p class="menuItem text-gray">Atividades</p></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <a class="text-decoration-none text-dark" href="/dashboard/escolas">
-                        <div class="d-flex align-items-center menuItem text-gray p-1 rounded ">
+                    
+                    <a href="/dashboard/escolas" class="text-decoration-none text-gray">
+                        <div class="row menuItem rounded py-2">
                             <div class="col-2"><span class="material-symbols-outlined align-middle">assignment_ind</span></div>
-                            <div class="col-10">Escolas</div>
+                            <div class="col">Escolas</div>
                         </div>
                     </a>
                 </div>
             </div>
-           <a href="{% url 'login'%}" class="text-decoration-none text-dark menuItem">
-            <div class="container px-3">
-                <div class="d-flex border-top p-3">
-                    <div class="col-2"><span class="material-symbols-outlined">logout</span></div>
-                    <div class="col-10"><p>Sair</p></div>
+            <a href="{% url 'login'%}" class="text-decoration-none link-secondary">
+                <div class="row menuItem rounded border-top py-2 mx-2">
+                    <div class="col-2"><span class="material-symbols-outlined align-middle">logout</span></div>
+                    <div class="col">Sair</div>
                 </div>
-           </div>
-           </a>
+            </a>
         </div>
-
-        <div class="col-10 shadow-sm">
+    
+        <div class="col shadow-sm"> <!--Conteúdo-->
             <nav class="navbar navbar-expand-lg bg-white  pt-3">
                 <div class="container-fluid">
                     <h3 class="logo px-3">{% block 'titulo' %}{% endblock %}</h3>
@@ -73,13 +81,12 @@
                             <li class="px-3"><hr class="dropdown-divider"></li>
                             <li><a href="{% url 'login'%}" class="text-decoration-none"><div class="dropdown-item d-flex" type="button"><span class="material-symbols-outlined pe-3">logout</span>Sair</div></li></a>
                         </ul>
-                      </div>
+                        </div>
                 </div>
             </nav>
-
             {% block 'header' %}            
-            {% endblock %}
-            
+                {% endblock %}
+                
             {% block 'content-escolas' %}            
             {% endblock %}
         </div>

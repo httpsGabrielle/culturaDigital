@@ -40,11 +40,25 @@ button, input, td{
 .text-gray{
     color:#7d7d7d;
 }
-.menuItem:hover{
+.menuItem{
+
+}
+.menuItem:hover {
     font-weight: bolder;
     color: black;
     background-color:#e0e0e0;
 }
+.menuItem:active{
+    font-weight: bolder;
+    color: black;
+    background-color:#e0e0e0;
+}
+.link-secondary:hover{
+    font-weight: bolder;
+    color: black;
+    background-color:#e0e0e0;
+}
+
 .btn-green{
     background-color:#18a770;
 }
