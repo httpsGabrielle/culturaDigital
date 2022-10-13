@@ -26,14 +26,6 @@
           <a class="d-flex justify-content-center text-decoration-none text-dark" href="/"><span class="material-symbols-outlined">chevron_left</span><p class="px-3">Voltar</p></a>
       </div>    
     </nav>
-      {% if next %}
-      {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
-      {% else %}
-        <p>Please login to see this page.</p>
-      {% endif %}
-    {% endif %}
       <img class="d-block mx-auto py-5" src="{% static 'img/images/Logo-lg.png' %}" style="width: 5%;">
       <div class="d-flex justify-content-center gy-5">
          <div class="container col-3 shadow-lg p-3 mb-5 bg-body rounded">
@@ -50,9 +42,7 @@
                   <input type="password" class="form-control" name="password" autocomplete="current-password" required id="id_password">           
                 </div>
                 {% if form.errors %}
-                <div class="alert alert-danger" role="alert">
-                  Login ou senha invalidos!
-                </div>
+                <div class="alert alert-danger" role="alert">Login ou senha invalidos!</div>
                 {% endif %}
                 <div class="d-grid gap-2 text-center">
                   <button type="submit" value="login" class="btn btn-success my-3">Logar</button>

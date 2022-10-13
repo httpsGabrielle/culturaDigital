@@ -12,4 +12,5 @@ urlpatterns = [
     path('atividades/pendentes/', views.atividadespendentes, name='atividadespendentes'),
     path('edit/<int:id>', views.edit, name='edit'),
     path('escolas/', views.escolas, name='escolas'),
+    path('escolas/<int:pk>/delete', views.deleteUser.as_view(), name='deleteUser'),
 ]
