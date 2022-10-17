@@ -1,17 +1,15 @@
-from contextlib import redirect_stderr
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from appMain.models import Tarefas
-from appMain.views import tarefas
-from .forms import AddTarefas, deleteUser
-from django.contrib.auth.models import User
+from .forms import AddTarefas, UserProfileForm
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 
 @login_required(login_url='/accounts/login/')
-def dashboard(request):
-    return render(request, 'dashboard.html')
+def home(request):
+    return render(request, 'home_admin.html')
 
 def jogos(request):
     tarefas = Tarefas.objects.all()
@@ -102,20 +100,23 @@ def edit(request, id):
     context = {'tarefas':tarefas, 'form':form}
     return render(request, 'edit.html', context)
 
-def escolas(request):
-    form = UserCreationForm()
-    if request.method == 'POST' :
-        form = UserCreationForm(request.POST)
+def usuarios(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            group = form.cleaned_data['group']        
+            group.user_set.add(user)
             
+    else:
+        form = UserProfileForm()       
 
     users = User.objects.all()
     context = {'users':users,'form':form}
-    return render(request, 'escolas.html', context)
+    return render(request, 'usuarios.html', context)
 
 class deleteUser(DeleteView):
     model = User
     template_name='deleteEscolas.html'
-    success_url = reverse_lazy('escolas')
+    success_url = reverse_lazy('usuarios')
    

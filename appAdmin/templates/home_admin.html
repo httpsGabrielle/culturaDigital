@@ -1,0 +1,12 @@
+{% extends 'dashboard.html' %}
+
+{% block 'conteudo' %}  
+<div class="container-fluid vh-100">
+    <div class="row px-5 h-25">
+        <div class="container d-flex justify-content-center flex-column p-5 headerHome text-white">
+            <h3>Bem-vindo(a), {{ user.get_username }}!</h3>
+            <h6 class="pt-3"> O que iremos fazer hoje? <span>&#128522;</span></h6>
+        </div>
+    </div>
+</div>
+{% endblock %}
