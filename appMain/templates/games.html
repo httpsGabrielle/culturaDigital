@@ -3,7 +3,7 @@
 {% block title %}Tarefas{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container h-100">
   <div class="row">
     {%for tarefa in tarefas %}
       {% if tarefa.publicado %}
@@ -23,3 +23,4 @@
     {% endfor %}
 </div>
 {% endblock %}
+

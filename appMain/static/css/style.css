@@ -46,13 +46,19 @@ button, input, td{
 .bg-menucolor{
     background-color: #f9f9f9;
 }
-.bg-gray{
-    
+.bg-green{
+    background-color: #5e963f;
 }
 .text-gray{
     color:#7d7d7d;
 }
-
+.bg-footer{
+    background-color: #2c5746;
+}
+.copyrightMark{
+    border-top: 1px solid #416859;
+    color: #56796b;
+}
 .menuItem:hover {
     font-weight: bolder;
     color: black;

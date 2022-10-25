@@ -1,0 +1,12 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% block 'conteudo' %}  
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+      <div class="modal-footer">
+        <a href="/dashboard"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button></a>
+        <button type="submit" value="Submit" class="btn btn-danger">Salvar</button>
+      </div>
+  </form>
+{% endblock %}

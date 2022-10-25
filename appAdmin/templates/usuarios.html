@@ -24,12 +24,14 @@
     {% for user in users %}
         <div class="card m-3" style="width: 18rem;">
             <div class="card-body">
-                <div class=" d-flex justify-content-between align-items-center">
-                    <h5 class="fw-bold">{{user.get_username}}</h5>
-                    <button type="button" class="btn"><span class="material-symbols-outlined text-secondary">edit</span></button>
-                </div>
-                <p class="card-text text-gray py-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="col">
+                        <h5 class="card-title fw-bold">{{user.get_username}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{user.groups.all.0.name}}</h6>    
+                    </div>
+                    <a href="{% url 'editUsuario' user.id %}"><button type="button" class="btn"><span class="material-symbols-outlined text-secondary">edit</span></button></a>
+                </div>  
+                <div class="d-grid gap-2 d-md-flex justify-content-between">   
                     <a href="{% url 'deleteUser' user.id %}"><button class="btn btn-danger" type="button"  data-bs-toggle="modal" data-bs-target="#deleteModal">Deletar</button></a>
                 </div>
             </div>

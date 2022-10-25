@@ -15,4 +15,7 @@ class UserProfileForm(UserCreationForm):
 class AddTarefas(forms.ModelForm):
     class Meta:
         model = Tarefas
-        fields = '__all__'
+        fields = ['nome', 'link', 'descricao', 'materia', 'categoria','publicado' ]
+
+    
+        

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from appMain.models import Tarefas
 from .forms import AddTarefas, UserProfileForm
 from django.contrib.auth.models import User, Group
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import SetPasswordForm
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 
@@ -27,10 +27,13 @@ def jogos(request):
 def jogospendentes(request):
     tarefas = Tarefas.objects.all()
     form = AddTarefas()
+
     if request.method == 'POST' :
         form = AddTarefas(request.POST)
 
         if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
             form.save()
             return redirect('/dashboard/jogos/pendentes')
 
@@ -44,6 +47,8 @@ def videos(request):
         form = AddTarefas(request.POST)
 
         if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
             form.save()
             return redirect('/dashboard/videos/')
 
@@ -57,6 +62,8 @@ def videospendentes(request):
         form = AddTarefas(request.POST)
 
         if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
             form.save()
             return redirect('/dashboard/videos/pendentes')
 
@@ -70,6 +77,8 @@ def atividades(request):
         form = AddTarefas(request.POST)
 
         if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
             form.save()
             return redirect('/dashboard/atividades')
 
@@ -83,6 +92,8 @@ def atividadespendentes(request):
         form = AddTarefas(request.POST)
 
         if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
             form.save()
             return redirect('/dashboard/atividades/pendentes')
 
@@ -119,4 +130,16 @@ class deleteUser(DeleteView):
     model = User
     template_name='deleteEscolas.html'
     success_url = reverse_lazy('usuarios')
+
+def editUsuario(request, id):
+    usuarios = User.objects.get(id = id)
+
+    form = SetPasswordForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('/dashboard/usuarios/')
+
+    users = User.objects.all()
+    context = {'users':users,'form':form}
+    return render(request, 'editUsers.html', context)
    

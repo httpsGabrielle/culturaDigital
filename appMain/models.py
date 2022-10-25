@@ -21,6 +21,7 @@ class Tarefas(models.Model):
     materia = models.ForeignKey(Materia, on_delete=models.DO_NOTHING)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
     publicado = models.BooleanField(default=False)
+    usuario = models.ForeignKey(to=User, on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name= 'Tarefa'
