@@ -6,6 +6,8 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import SetPasswordForm
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -18,6 +20,8 @@ def jogos(request):
         form = AddTarefas(request.POST)
 
         if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
             form.save()
             return redirect('/dashboard/jogos/')
 
@@ -111,6 +115,17 @@ def edit(request, id):
     context = {'tarefas':tarefas, 'form':form}
     return render(request, 'edit.html', context)
 
+def deletarTarefa(request, id):
+    tarefas = Tarefas.objects.get(id=id)
+    tarefas.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def publicar(request, id):
+    tarefas = Tarefas.objects.get(id=id)
+    tarefas.publicado = True 
+    tarefas.save()   
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 def usuarios(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST)
@@ -126,11 +141,6 @@ def usuarios(request):
     context = {'users':users,'form':form}
     return render(request, 'usuarios.html', context)
 
-class deleteUser(DeleteView):
-    model = User
-    template_name='deleteEscolas.html'
-    success_url = reverse_lazy('usuarios')
-
 def editUsuario(request, id):
     usuarios = User.objects.get(id = id)
 
@@ -142,4 +152,9 @@ def editUsuario(request, id):
     users = User.objects.all()
     context = {'users':users,'form':form}
     return render(request, 'editUsers.html', context)
-   
+
+
+class deleteUser(DeleteView):
+    model = User
+    template_name='deleteEscolas.html'
+    success_url = reverse_lazy('usuarios')

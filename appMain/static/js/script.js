@@ -8,6 +8,14 @@ $(document).ready(function() {
        $(this).removeClass('shadow');
      }
    );
+
+   $( ".cardusers" ).hover(
+    function() {
+      $(this).addClass('border-success').css('cursor', 'pointer'); 
+    }, function() {
+      $(this).removeClass('border-success');
+    }
+  );
    
    });
 

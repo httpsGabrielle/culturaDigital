@@ -10,7 +10,7 @@ class UserProfileForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2', 'group']
+        fields = ['first_name', 'username', 'password1', 'password2', 'group']
 
 class AddTarefas(forms.ModelForm):
     class Meta:
