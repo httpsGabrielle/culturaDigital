@@ -26,7 +26,7 @@
 
 <body>
     <div class="container d-flex">
-        <div class="row">
+        <div class="row" style="max-width: 100vw;">
             <div class="bg-menucolor p-3 col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
                 <!--Menu/Navbar lateral-->
                 <div class="row">
@@ -131,15 +131,16 @@
                         </div>
                     </div>
                 </nav>
+
                 {% block 'header' %}
                 {% endblock %}
 
                 {% block 'conteudo' %}
                 {% endblock %}
+
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

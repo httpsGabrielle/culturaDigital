@@ -28,8 +28,8 @@
         {% for user in users %}
         <div class="card m-3  cardusers" style="width: 22rem;">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-2">
+                <div class="row justify-content-between align-items-center">
+                    <div style="width: 50px; height: 50px;">
                         {% if user.groups.all.0.name == "Escola" %}
                         <div class="rounded rounded-pill">
                             <img src="https://img.icons8.com/ios-filled/344/school.png" class="img-fluid" alt="...">
@@ -46,8 +46,7 @@
                         </div>
                         {% endif %}
                     </div>
-                    <div class="col"></div>
-                    <div class="col-2">
+                    <div style="width: 50px; height: 50px;">
                         <div class="btn-group dropend">
                             <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false"><span
                                     class="material-symbols-outlined text-secondary">more_vert</span></button></a>
